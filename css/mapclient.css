@@ -24,3 +24,60 @@ h1 {
 	font-size: 2em;
 	font-weight: bold;
 }
+
+/* Loading animations <3 */
+.beforeLoad:after {
+	width: 14px;
+	height: 14px;
+	margin: 0 0 -4px 4px;
+
+	border: 3px solid rgba(51, 51, 51, .15);
+	border-radius: 100%;
+	display: inline-block;
+	content: "";
+}
+
+.whileLoad:after {
+	width: 14px;
+	height: 14px;
+	margin: 0 0 -4px 4px;
+
+	border-left: 3px solid rgba(51,51,51,.15);
+	border-right: 3px solid rgba(51,51,51,.15);
+	border-bottom: 3px solid rgba(51,51,51,.15);
+	border-top: 3px solid rgba(51,51,51,.8);
+	border-radius: 100%;
+	display: inline-block;
+	content: "";
+
+	-webkit-animation: spin 1.3s infinite linear;
+	animation: spin 1.3s infinite linear;
+}
+
+.afterLoad:after {
+	width: 14px;
+	height: 14px;
+	margin: 0 0 -4px 4px;
+
+	border: 3px solid rgba(51, 51, 51, .8);
+	border-radius: 100%;
+	display: inline-block;
+	content: "";
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}
+
+/* Server status */
+#serverStatus {
+	float: right;
+	width: 120px;
+	text-align: right;
+}

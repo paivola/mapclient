@@ -1,6 +1,6 @@
 /*
-	main.js - Main JS file for MapClient
-	====================================
+	main.js
+	=======
 
 	License: MIT, see LICENSE.
 	Author(s): Juhani Imberg
@@ -14,10 +14,11 @@ require.config({
 	paths: {
 		'minified': '../bower_components/minified/dist/minified',
 		'leaflet': '../bower_components/leaflet-dist/leaflet'
-	}
+	},
+	baseUrl: "js"
 });
 
-require(['minified', 'leaflet'], function(MINI, LL) {
+require(['minified', 'leaflet', 'comms'], function(MINI, LL, comms) {
 
 	// Minified init right here
 	$ = MINI.$, $$ = MINI.$$, EE = MINI.EE;
@@ -25,6 +26,8 @@ require(['minified', 'leaflet'], function(MINI, LL) {
 
 	// Basically on page load
 	$(function() {
+
+		comms.connect();
 
 		initMap();
 
@@ -38,7 +41,6 @@ require(['minified', 'leaflet'], function(MINI, LL) {
 
 function resizeMap () {
 	$("#map").set("$$height", (window.innerHeight - $("#header").get("$height", true) - $("#footer").get("$height", true) - 70)+"px");
-		console.log($("#map").get("$$height"));
 }
 
 function initMap () {
@@ -47,4 +49,5 @@ function initMap () {
 
 	var map = L.map("map").setView([9, 45], 5,8);
 	L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {minZoom: 3, maxZoom: 15, attribution: "Map data © OpenStreetMap contributors"}).addTo(map);
+	var marker = L.marker([9, 45]).addTo(map);
 }
