@@ -1,0 +1,22 @@
+{
+  "name": "mapclient",
+  "version": "0.0.0",
+  "authors": [
+    "JuhaniImberg <juhani@imberg.fi>"
+  ],
+  "description": "Client for mapserver",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "~2.1.3",
+    "leaflet-dist": "~0.7.1",
+    "minified": "~2014.0.0-beta4.0",
+    "requirejs": "~2.1.9"
+  }
+}

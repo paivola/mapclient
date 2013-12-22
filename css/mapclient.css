@@ -1,0 +1,26 @@
+/*
+	mapclient.css
+	=============
+
+	License: MIT, see LICENSE.
+	Author(s): Juhani Imberg
+*/
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.2em;
+	background-color: #F8F8F8;
+	margin: 15px;
+}
+
+h1, p {
+	color: #333;
+}
+
+h1 {
+	display: block;
+	font-size: 2em;
+	font-weight: bold;
+}
