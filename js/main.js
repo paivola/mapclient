@@ -45,18 +45,23 @@ function resizeMap () {
 			$("#footer").get("$height", true) -
 			30
 		)+"px");
+	console.log("asd");
 }
 
 function initMap () {
 	window.onresize = function() { resizeMap(); };
 	resizeMap();
 
-	var map = L.map("map").setView([9, 45], 5,8);
+	var map = L.map("map").setView([6, 45], 6);
 	L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 		{
 			minZoom: 3,
 			maxZoom: 15,
 			attribution: "Map data © OpenStreetMap contributors"
 		}).addTo(map);
-	var marker = L.marker([9, 45]).addTo(map);
+	map.fitBounds([
+		[12, 40],
+		[-5, 49]
+	])
+	//var marker = L.marker([9, 45]).addTo(map);
 }
