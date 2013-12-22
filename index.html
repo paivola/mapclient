@@ -18,20 +18,23 @@
 	<!-- Our own cascade -->
 	<link rel="stylesheet" type="text/css" href="css/mapclient.css">
 	
-	<!-- RequireJS will be doing our heavy lifting. -->
+	<!-- RequireJS will be doing our heavy lifting. (JS Loading) -->
 	<script type="text/javascript" data-main="js/main" src="bower_components/requirejs/require.js"></script>
 </head>
 <body>
 	<header id="header">
 		<h1 id="hello">MapClient</h1>
-		<h1 id="hello2">MapClient22</h1>
+		<div id="simulationStatus" class="beforeLoad">Ready</div>
+		<div class="floatClear"></div>
 	</header>
 
 	<div id="map"></div>
 
 	<footer id="footer">
-		<input type="range" min="0" max="100" step="5">
+		<div id="timeStatus">Week <span id="timePos" class="subtler"></span></div>
+		<input id="range" type="range" min="0" max="52" step="1" value="0" style="width: calc(100% - 270px);">
 		<div id="serverStatus" class="beforeLoad">Disconnected</div>
+		<div class="floatClear"></div>
 	</footer>
 </body>
 </html>

@@ -25,10 +25,21 @@ define(['minified'],
 				$("#serverStatus").ht("Connecting");
 			},
 			onopen: function() {
-				$("#serverStatus").set("$", "-whileLoad +afterLoad");
-				$("#serverStatus").ht("Connected");
+				this.socket.send(JSON.stringify({action: "hello"}));
 			},
 			onmessage: function(e) {
+
+				var obj = JSON.parse(e.data);
+				console.log(obj);
+
+				switch(obj.action) {
+					case "hello":
+						$("#serverStatus").set("$", "-whileLoad +afterLoad");
+						$("#serverStatus").ht("Connected");
+						break;
+					default:
+						break;
+				}
 
 			},
 			onclose: function() {

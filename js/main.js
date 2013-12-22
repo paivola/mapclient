@@ -7,8 +7,9 @@
 */
 
 // Globals plz
-var $ = null, $$ = null, EE = null;
+var $ = null, $$ = null, EE = null, _ = null;
 var L;
+var range;
 
 require.config({
 	paths: {
@@ -18,10 +19,10 @@ require.config({
 	baseUrl: "js"
 });
 
-require(['minified', 'leaflet', 'comms'], function(MINI, LL, comms) {
+require(['minified', 'leaflet', 'comms', 'range'], function(MINI, LL, comms, R) {
 
 	// Minified init right here
-	$ = MINI.$, $$ = MINI.$$, EE = MINI.EE;
+	$ = MINI.$, $$ = MINI.$$, EE = MINI.EE, _ = MINI._;
 	L = LL;
 
 	// Basically on page load
@@ -30,17 +31,20 @@ require(['minified', 'leaflet', 'comms'], function(MINI, LL, comms) {
 		comms.connect();
 
 		initMap();
+		range = R.init("#range", "#timePos");
 
-		$("#hello").on("click", function () {
-			console.log(L.version);
-		});
-		
 	});
 
 });
 
 function resizeMap () {
-	$("#map").set("$$height", (window.innerHeight - $("#header").get("$height", true) - $("#footer").get("$height", true) - 70)+"px");
+	$("#map").set("$$height", 
+		(
+			window.innerHeight -
+			$("#header").get("$height", true) -
+			$("#footer").get("$height", true) -
+			30
+		)+"px");
 }
 
 function initMap () {
@@ -48,6 +52,11 @@ function initMap () {
 	resizeMap();
 
 	var map = L.map("map").setView([9, 45], 5,8);
-	L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {minZoom: 3, maxZoom: 15, attribution: "Map data © OpenStreetMap contributors"}).addTo(map);
+	L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+		{
+			minZoom: 3,
+			maxZoom: 15,
+			attribution: "Map data © OpenStreetMap contributors"
+		}).addTo(map);
 	var marker = L.marker([9, 45]).addTo(map);
 }
