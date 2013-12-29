@@ -9,7 +9,10 @@
 define(['minified'],
 	function(MINI) {
 
-		var $ = MINI.$, $$ = MINI.$$, EE = MINI.EE, _ = MINI._;
+		var $ = MINI.$;
+		var $$ = MINI.$$;
+		var EE = MINI.EE;
+		var _ = MINI._;
 
 		return {
 			rangeElement:null,
@@ -49,7 +52,7 @@ define(['minified'],
 				}
 				return s;
 			}
-		}
+		};
 
 	}
 );

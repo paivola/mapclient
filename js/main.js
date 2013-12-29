@@ -7,7 +7,10 @@
 */
 
 // Globals plz
-var $ = null, $$ = null, EE = null, _ = null;
+var $;
+var $$;
+var EE;
+var _;
 var L;
 var range;
 
@@ -22,7 +25,10 @@ require.config({
 require(['minified', 'leaflet', 'comms', 'range'], function(MINI, LL, comms, R) {
 
 	// Minified init right here
-	$ = MINI.$, $$ = MINI.$$, EE = MINI.EE, _ = MINI._;
+	$ = MINI.$;
+	$$ = MINI.$$;
+	EE = MINI.EE;
+	_ = MINI._;
 	L = LL;
 
 	// Basically on page load
@@ -45,14 +51,15 @@ function resizeMap () {
 			$("#footer").get("$height", true) -
 			30
 		)+"px");
-	console.log("asd");
 }
 
 function initMap () {
 	window.onresize = function() { resizeMap(); };
 	resizeMap();
 
-	var map = L.map("map").setView([6, 45], 6);
+	var map = L.map("map", {
+		doubleClickZoom: false
+	}).setView([6, 45], 6);
 	L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 		{
 			minZoom: 3,
@@ -62,6 +69,10 @@ function initMap () {
 	map.fitBounds([
 		[12, 40],
 		[-5, 49]
-	])
+	]);
+	map.on('dblclick', function(e) {
+		console.log(e.latlng);
+	});
+
 	//var marker = L.marker([9, 45]).addTo(map);
 }

@@ -15,11 +15,12 @@ body {
 	margin: 15px;
 }
 
-h1, p {
+p {
 	color: #333;
 }
 
 h1 {
+	color: #333;
 	display: block;
 	font-size: 2em;
 	font-weight: bold;
@@ -75,33 +76,29 @@ h1 {
 	to { -webkit-transform: rotate(360deg); }
 }
 
-/* Server status */
-#serverStatus {
+.rightStatus {
 	float: right;
 	width: 120px;
 	text-align: right;
 }
 
-#simulationStatus {
-	float: right;
-	width: 120px;
-	text-align: right;
+.topStatus {
 	margin-top: 30px;
 }
 
-#timeStatus {
+.leftStatus {
 	width: 140px;
 	display: inline-block;
 }
 
-#hello {
+.name {
 	display: inline-block;
 }
 
 .floatClear {
 	clear: both;
-	height: 0px;
-	width: 0px;
+	height: 0;
+	width: 0;
 }
 
 .subtle {
@@ -110,4 +107,30 @@ h1 {
 
 .subtler {
 	color: rgba(51,51,51,.5)
+}
+
+.range {
+	width: calc(100% - 270px);
+}
+
+.content {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.leftBox {
+	width: 250px;
+	border-right: 1px solid rgba(51,51,51,.5);
+	margin-right: 3px;
+}
+
+.rightBox {
+	-webkit-flex: 1 1 0;
+	-moz-flex: 1 1 0;
+	-ms-flex: 1 1 0;
+	-webkit-flex: 1 1 0;
+	flex: 1 1 0;
 }
