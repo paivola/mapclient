@@ -22,10 +22,13 @@
 	<script type="text/javascript" data-main="js/main" src="bower_components/requirejs/require.js"></script>
 </head>
 <body>
-	<header id="header">
-		<h1 id="hello" class="name">MapClient</h1>
-		<div id="simulationStatus" class="rightStatus topStatus beforeLoad">Waiting</div>
-		<div class="floatClear"></div>
+	<header id="header" class="header">
+		<div class="lefttop">
+			<h1 id="hello">MapClient</h1>
+		</div>
+		<div class="rightbot">
+			<div class="beforeLoad" id="simulationStatus">Waiting</div>
+		</div>
 	</header>
 
 	<div class="content">
@@ -33,11 +36,16 @@
 		<div id="map" class="rightBox"></div>
 	</div>
 
-	<footer id="footer">
-		<div id="timeStatus" class="leftStatus">Week <span id="timePos" class="subtler"></span></div>
-		<input id="range" type="range" class="range" min="0" max="52" step="1" value="0">
-		<div id="serverStatus" class="rightStatus bottomStatus beforeLoad">Disconnected</div>
-		<div class="floatClear"></div>
+	<footer id="footer" class="columncontainer">
+		<div class="leftcolumn">
+			<div id="timeStatus">Week <span id="timePos" class="subtler"></span></div>
+		</div>
+		<div class="middlecolumn">
+			<input id="range" type="range"min="0" max="52" step="1" value="0">
+		</div>
+		<div class="rightcolumn">
+			<div id="serverStatus" class="beforeLoad">Disconnected</div>
+		</div>
 	</footer>
 </body>
 </html>

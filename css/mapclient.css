@@ -76,31 +76,6 @@ h1 {
 	to { -webkit-transform: rotate(360deg); }
 }
 
-.rightStatus {
-	float: right;
-	width: 120px;
-	text-align: right;
-}
-
-.topStatus {
-	margin-top: 30px;
-}
-
-.leftStatus {
-	width: 140px;
-	display: inline-block;
-}
-
-.name {
-	display: inline-block;
-}
-
-.floatClear {
-	clear: both;
-	height: 0;
-	width: 0;
-}
-
 .subtle {
 	color: rgba(51,51,51,.8);
 }
@@ -114,11 +89,8 @@ h1 {
 }
 
 .content {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
 	display: flex;
+	padding: 5px 0;
 }
 
 .leftBox {
@@ -128,9 +100,43 @@ h1 {
 }
 
 .rightBox {
-	-webkit-flex: 1 1 0;
-	-moz-flex: 1 1 0;
-	-ms-flex: 1 1 0;
-	-webkit-flex: 1 1 0;
 	flex: 1 1 0;
+}
+
+.header {
+	display: flex;
+}
+
+.lefttop {
+	align-self: flex-start;
+}
+
+.rightbot {
+	align-self: flex-end;
+	flex: 1 1 0;
+	
+	text-align: right;
+}
+
+.columncontainer {
+	display: flex;
+	flex: 1;
+}
+
+.leftcolumn {
+	flex: 0 0 8em;
+}
+
+.rightcolumn {
+	flex: 0 0 8em;
+	text-align: right;
+}
+
+.middlecolumn {
+	flex: 1;
+	width: 100%;
+}
+
+input[type="range"] {
+	width: 100%;
 }

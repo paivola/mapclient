@@ -49,7 +49,7 @@ function resizeMap () {
 			window.innerHeight -
 			$("#header").get("$height", true) -
 			$("#footer").get("$height", true) -
-			30
+			40
 		)+"px");
 }
 
