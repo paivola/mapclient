@@ -38,6 +38,12 @@ require(['minified', 'leaflet', 'comms', 'range'], function(MINI, LL, comms, R) 
 
 		initMap();
 		range = R.init("#range", "#timePos");
+		
+		var sidehide = $("#stuff").toggle({$display: "block"}, {$display: "none"});
+		
+		$("#hideside").on("click", function() {
+			sidehide();
+		});
 
 	});
 
@@ -49,16 +55,24 @@ function resizeMap () {
 			window.innerHeight -
 			$("#header").get("$height", true) -
 			$("#footer").get("$height", true) -
-			40
+			25
 		)+"px");
 }
 
 function initMap () {
 	window.onresize = function() { resizeMap(); };
 	resizeMap();
+	
+	var overlays = {
+		"Points": L.layerGroup(),
+		"Paths": L.layerGroup(),
+		"Areas": L.layerGroup()
+	};
 
 	var map = L.map("map", {
-		doubleClickZoom: false
+		doubleClickZoom: false,
+		layers: [overlays.Points, overlays.Paths, overlays.Areas],
+		worldCopyJump: true
 	}).setView([6, 45], 6);
 	L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 		{
@@ -66,13 +80,18 @@ function initMap () {
 			maxZoom: 15,
 			attribution: "Map data © OpenStreetMap contributors"
 		}).addTo(map);
+	
 	map.fitBounds([
 		[12, 40],
 		[-5, 49]
 	]);
+	
 	map.on('dblclick', function(e) {
 		console.log(e.latlng);
+		L.marker(e.latlng, {opacity: 0.65}).addTo(overlays.Points);
 	});
+	
+	L.control.layers(null, overlays).addTo(map);
 
 	//var marker = L.marker([9, 45]).addTo(map);
 }

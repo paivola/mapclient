@@ -45,13 +45,15 @@ define(['minified'],
 					case "hello":
 						$("#serverStatus").set("$", "-whileLoad +afterLoad");
 						$("#serverStatus").ht("Connected");
+						$("#serverStatus").set("@title", "Connected to "+this.socket.url);
 						this.callCreate(52);
 						this.was_once = true;
 						break;
 					case "create":
 						if(this.success(obj)) {
 							this.manager_id = obj.manager_id;
-							console.log("manager_id: "+obj.manager_id);
+							console.log("manager_id: "+this.manager_id);
+							$("#simulationStatus").ht("Ready (ID: "+this.manager_id+")");
 							this.callGetSettings();
 						}
 						break;
@@ -63,6 +65,7 @@ define(['minified'],
 			onclose: function() {
 				$("#serverStatus").set("$", "-whileLoad -afterLoad +beforeLoad");
 				$("#serverStatus").ht("Disconnected");
+				$("#serverStatus").set("@title", "");
 				this.connect();
 			},
 			onerror: function() {
