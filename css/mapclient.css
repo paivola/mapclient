@@ -127,6 +127,8 @@ h1 {
 
 .leftcolumn {
 	flex: 0 0 9em;
+	text-align: right;
+	padding-right: 1em;
 }
 
 .rightcolumn {

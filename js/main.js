@@ -37,7 +37,7 @@ require(['minified', 'leaflet', 'comms', 'range'], function(MINI, LL, comms, R) 
 		comms.connect();
 
 		initMap();
-		range = R.init("#range", "#timePos");
+		range = R.init("#range", "#timePosWeek", "#timePosYear", 11);
 		
 		var sidehide = $("#stuff").toggle({$display: "block"}, {$display: "none"});
 		
