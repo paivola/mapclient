@@ -22,7 +22,7 @@ require.config({
 	baseUrl: "js"
 });
 
-require(['minified', 'leaflet', 'comms', 'range'], function(MINI, LL, comms, R) {
+require(['minified', 'leaflet', 'comms', 'range', 'sidebar'], function(MINI, LL, comms, R, side) {
 
 	// Minified init right here
 	$ = MINI.$;
@@ -34,16 +34,15 @@ require(['minified', 'leaflet', 'comms', 'range'], function(MINI, LL, comms, R) 
 	// Basically on page load
 	$(function() {
 
+		comms.weeks = 52*20;
 		comms.connect();
 
 		initMap();
-		range = R.init("#range", "#timePosWeek", "#timePosYear", 11);
+		range = R.init("#range", "#timePosWeek", "#timePosYear", 20);
 		
-		var sidehide = $("#stuff").toggle({$display: "block"}, {$display: "none"});
+		side.init("#stuff", "#hideside");
+		comms.addCB("getsettings", function(d){side.updateSettings(d);});
 		
-		$("#hideside").on("click", function() {
-			sidehide();
-		});
 
 	});
 

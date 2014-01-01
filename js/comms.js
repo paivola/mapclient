@@ -21,6 +21,17 @@ define(['minified'],
 			ready: false,
 			manager_id: -1,
 			was_once: false,
+			weeks: 52,
+			callbs: [],
+			addCB: function(on, what) {
+				this.callbs.push({action: on, cb: what});
+			},
+			checkCB: function(data) {
+				for(var i = 0; i < this.callbs.length; i++) {
+					if(this.callbs[i].action == data.action)
+						this.callbs[i].cb(data);
+				}
+			},
 			connect: function() {
 				var message = (!this.was_once?"Connecting":"Reconnecting");
 
@@ -46,7 +57,7 @@ define(['minified'],
 						$("#serverStatus").set("$", "-whileLoad +afterLoad");
 						$("#serverStatus").ht("Connected");
 						$("#serverStatus").set("@title", "Connected to "+this.socket.url);
-						this.callCreate(52);
+						this.callCreate(this.weeks);
 						this.was_once = true;
 						break;
 					case "create":
@@ -60,6 +71,8 @@ define(['minified'],
 					default:
 						break;
 				}
+				
+				this.checkCB(obj);
 
 			},
 			onclose: function() {

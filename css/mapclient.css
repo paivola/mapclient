@@ -84,6 +84,14 @@ h1 {
 	color: rgba(51,51,51,.5);
 }
 
+.unselected {
+	color: rgba(51,51,51,.5);
+}
+
+.sidebarlist {
+	cursor: pointer;
+}
+
 .range {
 	width: calc(100% - 270px);
 }
@@ -98,7 +106,7 @@ h1 {
 	text-align: justify;
 	padding-right: 5px;
 	margin-right: 5px;
-	border-right: 1px solid rgba(51,51,51,.5);
+	border-right: 1px dotted rgba(51,51,51,.5);
 }
 
 .rightBox {
