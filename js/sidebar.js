@@ -49,9 +49,9 @@ define(['minified'],
                     this.set("$", "+selectedtab");
                 });
 				
-				this.itemp = _.template(["<li>",
-											"Name: {{name}}",
-											"<ul>",
+				this.itemp = _.template(["<li class='sidebarlist unselected'>",
+											"{{name}}",
+											"<ul class='sidebarlistchild hidden'>",
 												"<li>Type: {{type}}</li>",
 												"<li>Color: {{color}}</li>",
 												"<li>Icon: {{icon}}</li>",
@@ -64,13 +64,15 @@ define(['minified'],
 				$("#available_tab").ht("<ul>");
 				for(var i in this.raw_settings) {
 					var cur = this.raw_settings[i];
-					$("#available_tab").add(HTML(this.itemp2({name: i, type: cur.type, color: cur.color, icon: cur.misc.icon})));
+					$("#available_tab").add(HTML(this.itemp({name: i, type: cur.type, color: cur.color, icon: cur.misc.icon})));
 				}
 				$("#available_tab").add(HTML("</ul"));
 				
 				$(".unselected").on("click", function() {
 					$(".sidebarlist").set("$", "+unselected");
 					$(this).set("$", "+selected -unselected");
+					$(".sidebarlistchild").set("$", "+hidden");
+					this.select(".sidebarlistchild").set("$", "-hidden");
 				});
 			}
 		};
