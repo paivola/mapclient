@@ -40,7 +40,7 @@ require(['minified', 'leaflet', 'comms', 'range', 'sidebar'], function(MINI, LL,
 		initMap();
 		range = R.init("#range", "#timePosWeek", "#timePosYear", 20);
 		
-		side.init("#stuff", "#hideside");
+		side.init();
 		comms.addCB("getsettings", function(d){side.updateSettings(d);});
 		
 

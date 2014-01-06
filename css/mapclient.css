@@ -1,9 +1,9 @@
 /*
-	mapclient.css
-	=============
+mapclient.css
+=============
 
-	License: MIT, see LICENSE.
-	Author(s): Juhani Imberg
+License: MIT, see LICENSE.
+Author(s): Juhani Imberg
 */
 
 body {
@@ -31,7 +31,7 @@ h1 {
 	width: 14px;
 	height: 14px;
 	margin: 0 0 -4px 4px;
-
+	
 	border: 3px solid rgba(51, 51, 51, .15);
 	border-radius: 100%;
 	display: inline-block;
@@ -42,7 +42,7 @@ h1 {
 	width: 14px;
 	height: 14px;
 	margin: 0 0 -4px 4px;
-
+	
 	border-left: 3px solid rgba(51,51,51,.15);
 	border-right: 3px solid rgba(51,51,51,.15);
 	border-bottom: 3px solid rgba(51,51,51,.15);
@@ -50,7 +50,7 @@ h1 {
 	border-radius: 100%;
 	display: inline-block;
 	content: "";
-
+	
 	-webkit-animation: spin 1.3s infinite linear;
 	animation: spin 1.3s infinite linear;
 }
@@ -59,7 +59,7 @@ h1 {
 	width: 14px;
 	height: 14px;
 	margin: 0 0 -4px 4px;
-
+	
 	border: 3px solid rgba(51, 51, 51, .8);
 	border-radius: 100%;
 	display: inline-block;
@@ -85,14 +85,14 @@ h1 {
 }
 
 .unselected {
-	color: rgba(51,51,51,.5);
+	color: #a8a8a8;
 }
 
 .sidebarlist {
 	cursor: pointer;
 }
 
-.range {
+div.range {
 	width: calc(100% - 270px);
 }
 
@@ -101,50 +101,50 @@ h1 {
 	padding: 5px 0;
 }
 
-.leftBox {
+div.leftBox {
 	width: 250px;
 	text-align: justify;
-	padding-right: 5px;
-	margin-right: 5px;
-	border-right: 1px dotted rgba(51,51,51,.5);
+	border-radius: 4px 0 0 4px;
+	background-color: #31322E;
 }
 
-.rightBox {
+div.rightBox {
 	flex: 1 1 0;
+	border-radius: 0 4px 4px 0;
 }
 
-.header {
+header.header {
 	display: flex;
 }
 
-.lefttop {
+div.lefttop {
 	align-self: flex-start;
 }
 
-.rightbot {
+div.rightbot {
 	align-self: flex-end;
 	flex: 1 1 0;
 	
 	text-align: right;
 }
 
-.columncontainer {
+footer.columncontainer {
 	display: flex;
 	flex: 1;
 }
 
-.leftcolumn {
+div.leftcolumn {
 	flex: 0 0 9em;
 	text-align: right;
 	padding-right: 1em;
 }
 
-.rightcolumn {
+div.rightcolumn {
 	flex: 0 0 9em;
 	text-align: right;
 }
 
-.middlecolumn {
+div.middlecolumn {
 	flex: 1;
 	width: 100%;
 }
@@ -153,7 +153,7 @@ input[type="range"] {
 	width: 100%;
 }
 
-.buttona {
+button {
 	font-family: inherit;
 	font-size: 100%;
 	padding: 0.25em 0.5em;
@@ -164,12 +164,54 @@ input[type="range"] {
 	border-radius: 4px;
 }
 
-.buttona:hover {
+button:hover {
 	background-color: #e8e8e8;
 }
 
-.buttona:active {
-	box-shadow: inset 0px 3px 3px #cbcbcb;
+button:active, button.selectedtab {
+	box-shadow: inset 0 3px 3px #cbcbcb;
 	background-color: #e8e8e8;
 	outline: none;
+}
+
+button:disabled {
+	color: #777;   
+}
+
+button.leftbutton {
+	border-right: none;
+	border-radius: 4px 0 0 4px;
+}
+
+button.middlebutton {
+	border-radius: 0;
+}
+
+button.rightbutton {
+	border-left: none;
+	border-radius: 0 4px 4px 0;
+}
+
+div.tab {
+	display: none;
+}
+
+div.selectedtab {
+	display: block;
+}
+
+div.tabselection {
+	text-align: center;
+	margin-top: 10px;
+}
+
+hr {
+	width: 95%;
+	border: none;
+	border-bottom: thin solid white;
+}
+
+div.tab {
+	margin: 3px;
+	color: #f8f8f8;
 }

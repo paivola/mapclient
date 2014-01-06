@@ -1,55 +1,61 @@
 <!DOCTYPE HTML>
 <!--
-	mapclient.html
-	==============
+mapclient.html
+==============
 
-	License: MIT, see LICENSE.
-	Author(s): Juhani Imberg
+License: MIT, see LICENSE.
+Author(s): Juhani Imberg
 -->
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>mapclient</title>
-
-	<!-- Wonderfull .css for brining all the browsers onto the same starting line. -->
-	<link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css">
-	<!-- Leaflet is used for our maps. It's quite awesome. -->
-	<link rel="stylesheet" type="text/css" href="bower_components/leaflet-dist/leaflet.css">
-	<!-- Our own cascade -->
-	<link rel="stylesheet" type="text/css" href="css/mapclient.css">
-	
-	<!-- RequireJS will be doing our heavy lifting. (JS Loading) -->
-	<script type="text/javascript" data-main="js/main" src="bower_components/requirejs/require.js"></script>
-</head>
-<body>
-	<header id="header" class="header">
-		<div class="lefttop">
-			<h1 id="hello">MapClient</h1>
-			<button class="buttona" id="hideside">Toggle sidebar</button>
-			<button class="buttona">Run</button>
+	<head>
+		<meta charset="UTF-8">
+		<title>mapclient</title>
+		
+		<!-- Wonderfull .css for brining all the browsers onto the same starting line. -->
+		<link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css">
+		<!-- Leaflet is used for our maps. It's quite awesome. -->
+		<link rel="stylesheet" type="text/css" href="bower_components/leaflet-dist/leaflet.css">
+		<!-- Our own cascade -->
+		<link rel="stylesheet" type="text/css" href="css/mapclient.css">
+		
+		<!-- RequireJS will be doing our heavy lifting. (JS Loading) -->
+		<script type="text/javascript" data-main="js/main" src="bower_components/requirejs/require.js"></script>
+	</head>
+	<body>
+		<header id="header" class="header">
+			<div class="lefttop">
+				<h1 id="hello">MapClient</h1>
+				<button id="hideside">Toggle sidebar</button>
+				<button>Start simulation</button>
+			</div>
+			<div class="rightbot">
+				<div class="beforeLoad" id="simulationStatus">Waiting</div>
+			</div>
+		</header>
+		
+		<div class="content">
+			<div id="stuff" class="leftBox">
+				<div class="tabselection">
+					<button class="leftbutton tabbutton selectedtab" id="available_button">Available</button><button class="middlebutton tabbutton"id="current_button">Current</button><button class="rightbutton tabbutton" id="current_button">Selected</button>
+				</div>
+				<hr />
+				<div id="available_tab" class="tab selectedtab"></div>
+				<div id="current_tab" class="tab"></div>
+				<div id="selected_tab" class="tab"></div>
+			</div>
+			<div id="map" class="rightBox"></div>
 		</div>
-		<div class="rightbot">
-			<div class="beforeLoad" id="simulationStatus">Waiting</div>
-		</div>
-	</header>
-
-	<div class="content">
-		<div id="stuff" class="leftBox">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</div>
-		<div id="map" class="rightBox"></div>
-	</div>
-
-	<footer id="footer" class="columncontainer">
-		<div class="leftcolumn">
-			<div id="timeStatus">Year <span id="timePosYear" class="subtler"></span><br />Week <span id="timePosWeek" class="subtler"></span></div>
-		</div>
-		<div class="middlecolumn">
-			<input id="range" type="range"min="0" max="200" step="1" value="0">
-		</div>
-		<div class="rightcolumn">
-			<div id="serverStatus" class="beforeLoad">Disconnected</div>
-		</div>
-	</footer>
-</body>
+		
+		<footer id="footer" class="columncontainer">
+			<div class="leftcolumn">
+				<div id="timeStatus">Year <span id="timePosYear" class="subtler"></span><br />Week <span id="timePosWeek" class="subtler"></span></div>
+			</div>
+			<div class="middlecolumn">
+				<input id="range" type="range"min="0" max="200" step="1" value="0">
+			</div>
+			<div class="rightcolumn">
+				<div id="serverStatus" class="beforeLoad">Disconnected</div>
+			</div>
+		</footer>
+	</body>
 </html>

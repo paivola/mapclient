@@ -16,22 +16,38 @@ define(['minified'],
 		var HTML = MINI.HTML;
 
 		return {
-			sidebarElement:null,
-			sidebarToggleElement:null,
 			sidehide:null,
 			raw_settings:null,
 			itemp:null,
 			itemp2:null,
-			init: function(sidebar, toggle) {
-				this.sidebarElement = $(sidebar);
-				this.sidebarToggleElement = $(toggle);
+			init: function() {
 				
-				this.sidehide = this.sidebarElement.toggle({$display: "block"}, {$display: "none"});
+				//this.sidehide = $("#stuff").toggle({$display: "block"}, {$display: "none"});
+				this.sidehide = $("#stuff").toggle({$width: "250px"}, {$width: "0px"}, 500);
 				
 				var that = this;
-				this.sidebarToggleElement.on("click", function() {
+				$("#hideside").on("click", function() {
 					that.sidehide();
 				});
+                
+                $("#available_button").on("click", function() {
+                    $(".tab").set("$", "-selectedtab");
+                    $("#available_tab").set("$", "+selectedtab");
+                    $(".tabbutton").set("$", "-selectedtab");
+                    this.set("$", "+selectedtab");
+                });
+                $("#current_button").on("click", function() {
+                    $(".tab").set("$", "-selectedtab");
+                    $("#current_tab").set("$", "+selectedtab");
+                    $(".tabbutton").set("$", "-selectedtab");
+                    this.set("$", "+selectedtab");
+                });
+                $("#selected_button").on("click", function() {
+                    $(".tab").set("$", "-selectedtab");
+                    $("#selected_tab").set("$", "+selectedtab");
+                    $(".tabbutton").set("$", "-selectedtab");
+                    this.set("$", "+selectedtab");
+                });
 				
 				this.itemp = _.template(["<li>",
 											"Name: {{name}}",
@@ -42,22 +58,19 @@ define(['minified'],
 											"</ul",
 										"</li>"].join(''));
 				this.itemp2 = _.template("<li class='sidebarlist unselected'>{{name}}</li>");
-				
-				this.sidebarElement.ht("");
 			},
 			updateSettings: function(data) {
 				this.raw_settings = data.settings;
-				this.sidebarElement.ht("<ul>");
+				$("#available_tab").ht("<ul>");
 				for(var i in this.raw_settings) {
 					var cur = this.raw_settings[i];
-					this.sidebarElement.add(HTML(this.itemp2({name: i, type: cur.type, color: cur.color, icon: cur.misc.icon})));
+					$("#available_tab").add(HTML(this.itemp2({name: i, type: cur.type, color: cur.color, icon: cur.misc.icon})));
 				}
-				this.sidebarElement.add(HTML("</ul"));
+				$("#available_tab").add(HTML("</ul"));
 				
 				$(".unselected").on("click", function() {
 					$(".sidebarlist").set("$", "+unselected");
 					$(this).set("$", "+selected -unselected");
-					console.log("asd");
 				});
 			}
 		};

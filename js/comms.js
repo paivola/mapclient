@@ -86,18 +86,22 @@ define(['minified'],
 			},
 
 			callCreate: function(ticks) {
-				if(this.socket === null || this.manager_id != -1) { return; }
+				if(this.socket === null || this.manager_id !== -1) { return; }
 
 				this.socket.send(JSON.stringify({action: "create", ticks: ticks}));
 
 			},
 			
 			callGetSettings: function() {
-				if(this.socket === null || this.manager_id == -1) { return; }
+				if(this.socket === null || this.manager_id === -1) { return; }
 				
 				this.socket.send(JSON.stringify({action: "getsettings", manager_id: this.manager_id}));
 			},
-
+            callStart: function() {
+                if(this.socket === null || this.manager_id === -1) { return; }
+                
+                this.socket.send(JSON.stringify({action: "start", manager_id: this.manager_id}));
+            },
 			success: function(obj) {
 				return obj.status === "success";
 			}
