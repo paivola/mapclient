@@ -35,7 +35,7 @@ define(['minified'],
 			connect: function() {
 				var message = (!this.was_once?"Connecting":"Reconnecting");
 
-				this.socket = new WebSocket("ws://localhost:8080/");
+                this.socket = new WebSocket("ws://"+window.mapclient_settings.host+":"+window.mapclient_settings.port+"/");
 				var that = this;
 				this.socket.onopen = function(){that.onopen();};
 				this.socket.onmessage = function(e){that.onmessage(e);};
