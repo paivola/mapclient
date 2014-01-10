@@ -10,7 +10,7 @@
 
 define(['minified'],
 	function(MINI) {
-
+  
 		var $ = MINI.$;
 		var $$ = MINI.$$;
 		var EE = MINI.EE;
@@ -51,6 +51,7 @@ define(['minified'],
 
 				var obj = JSON.parse(e.data);
 				console.log(obj);
+				mapPointList.push(obj);
 
 				switch(obj.action) {
 					case "hello":

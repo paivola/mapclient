@@ -13,6 +13,7 @@ var EE;
 var _;
 var L;
 var range;
+var mapPointList = [];
 
 require.config({
 	paths: {

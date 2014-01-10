@@ -71,6 +71,8 @@ define(['minified'],
 				$(".unselected").on("click", function() {
 					$(".sidebarlist").set("$", "+unselected");
 					$(this).set("$", "+selected -unselected");
+					var name = $(this).get("innerHTML");
+					$("#currently_placing").set('innerHTML', name);
 					$(".sidebarlistchild").set("$", "+hidden");
 					this.select(".sidebarlistchild").set("$", "-hidden");
 				});
