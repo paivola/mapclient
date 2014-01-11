@@ -48,7 +48,8 @@ define(['minified'],
                     $(".tabbutton").set("$", "-selectedtab");
                     this.set("$", "+selectedtab");
                 });
-				
+
+ 				
 				this.itemp = _.template(["<li class='sidebarlist unselected'>",
 											"{{name}}",
 											"<ul class='sidebarlistchild hidden'>",

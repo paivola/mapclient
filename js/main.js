@@ -13,8 +13,8 @@ var EE;
 var _;
 var L;
 var range;
-var objectlist = { "points": [], "paths": [] };
-var path_checklist = [];
+//var objectlist = { "points": [], "paths": [] };
+var path_checklist = []; // templist which contains paths coordinates and checks when to draw line
 
 require.config({
 	paths: {
@@ -37,6 +37,7 @@ require(['minified', 'leaflet', 'comms', 'range', 'sidebar', 'popup'], function(
 	$(function() {
 
 		comms.weeks = 52*20;
+
 		comms.connect();
 
 		initMap();
@@ -102,8 +103,8 @@ function initMap () {
 	map.on('dblclick', function(e) {
 		marker = L.marker(e.latlng, {opacity: 0.65}).addTo(overlays.Points);
 		var point = {"action": "move", "model_id": 0, "lat": e.latlng.lat, "lng": e.latlng.lng};
+		comms.sendObject( point );
 		//model_id pitää saada tietää jostain
-		objectlist.points.push( point );
 
 		marker.on('click', function(e) {
 		    path_checklist.push( e.latlng );
@@ -116,13 +117,14 @@ function initMap () {
 	            });
 	            line.addTo(overlays.Paths);
 	            var path = {"action": "move", "model_id": 0, "start_latlng": [ path_checklist[0].lat, path_checklist[0].lng  ], "end_latlng":  [ path_checklist[1].lat, path_checklist[1].lng ]};
-	            objectlist.paths.push( path );
-	            alert(path.start_latlng[0]);
 	            path_checklist = [];
+	            comms.sendObject( path );
 		    }
 	    });
 	
 	});
+
+
 	
 	L.control.layers(null, overlays).addTo(map);
 

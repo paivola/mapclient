@@ -102,7 +102,12 @@ define(['minified'],
                 
                 this.socket.send(JSON.stringify({action: "start", manager_id: this.manager_id}));
             },
-			success: function(obj) {
+
+            sendObject: function(object){
+                this.socket.send( action: "sendObject", object: JSON.stringify(object) );
+            },
+
+            success: function(obj) {
 				return obj.status === "success";
 			}
 		};
