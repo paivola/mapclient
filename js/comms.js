@@ -17,8 +17,6 @@ define(['minified'],
 		var _ = MINI._;
 
 		return {
-			host: null,
-			port: null,
 			socket: null,
 			ready: false,
 			manager_id: -1,
@@ -37,7 +35,7 @@ define(['minified'],
 			connect: function() {
 				var message = (!this.was_once?"Connecting":"Reconnecting");
 
-                this.socket = new WebSocket("ws://"+(this.host||window.mapclient_settings.host)+":"+(this.port||window.mapclient_settings.port)+"/");
+				this.socket = new WebSocket("ws://localhost:8080/");
 				var that = this;
 				this.socket.onopen = function(){that.onopen();};
 				this.socket.onmessage = function(e){that.onmessage(e);};
@@ -47,14 +45,12 @@ define(['minified'],
 				$("#serverStatus").ht(message);
 			},
 			onopen: function() {
-				if(this.socket.readyState==1)
-					this.socket.send(JSON.stringify({action: "hello"}));
+				this.socket.send(JSON.stringify({action: "hello"}));
 			},
 			onmessage: function(e) {
 
 				var obj = JSON.parse(e.data);
 				console.log(obj);
-				mapPointList.push(obj);
 
 				switch(obj.action) {
 					case "hello":

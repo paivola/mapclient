@@ -13,7 +13,8 @@ var EE;
 var _;
 var L;
 var range;
-var objectlist = { "points": [], "connections": [] };
+var objectlist = { "points": [], "paths": [] };
+var path_checklist = [];
 
 require.config({
 	paths: {
@@ -99,12 +100,28 @@ function initMap () {
 	]);
 	
 	map.on('dblclick', function(e) {
-		console.log(e.latlng);
-		L.marker(e.latlng, {opacity: 0.65}).addTo(overlays.Points);
-		alert(e.lat);
-		var point = { "latlng" : [] };
-		objectlist.points.push( e.latlng );
-		alert(objectlist.points);
+		marker = L.marker(e.latlng, {opacity: 0.65}).addTo(overlays.Points);
+		var point = {"action": "move", "model_id": 0, "lat": e.latlng.lat, "lng": e.latlng.lng};
+		//model_id pitää saada tietää jostain
+		objectlist.points.push( point );
+
+		marker.on('click', function(e) {
+		    path_checklist.push( e.latlng );
+		    if(path_checklist.length >= 1){
+                var line = new L.Polyline([ path_checklist[0], path_checklist[1] ], {
+	              color: 'black',
+	              weight: 3,
+	              opacity: 0.8,
+	              smoothFactor: 1
+	            });
+	            line.addTo(overlays.Paths);
+	            var path = {"action": "move", "model_id": 0, "start_latlng": [ path_checklist[0].lat, path_checklist[0].lng  ], "end_latlng":  [ path_checklist[1].lat, path_checklist[1].lng ]};
+	            objectlist.paths.push( path );
+	            alert(path.start_latlng[0]);
+	            path_checklist = [];
+		    }
+	    });
+	
 	});
 	
 	L.control.layers(null, overlays).addTo(map);
