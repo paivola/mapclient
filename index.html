@@ -17,16 +17,20 @@ Author(s): Juhani Imberg
 		<link rel="stylesheet" type="text/css" href="bower_components/leaflet-dist/leaflet.css">
 		<!-- Our own cascade -->
 		<link rel="stylesheet" type="text/css" href="css/mapclient.css">
-		
+
+        <!-- Our settings are loaded here -->
+        <script type="text/javascript" src="settings.js"></script>
+
 		<!-- RequireJS will be doing our heavy lifting. (JS Loading) -->
 		<script type="text/javascript" data-main="js/main" src="bower_components/requirejs/require.js"></script>
 	</head>
 	<body>
 		<header id="header" class="header">
 			<div class="lefttop">
-				<h1 id="hello">MapClient</h1>
+				<h1 id="hello">MapClient (Nonfunctional)</h1>
 				<button id="hideside">Toggle sidebar</button>
 				<button>Start simulation</button>
+				<button id="connectionSettings">Connection settings</button>
 			</div>
 			<div class="rightbot">
 				<div class="beforeLoad" id="simulationStatus">Waiting</div>
@@ -61,5 +65,6 @@ Author(s): Juhani Imberg
 				<div id="serverStatus" class="beforeLoad">Disconnected</div>
 			</div>
 		</footer>
+        <div class="block"><div class="popup"></div></div>
 	</body>
 </html>

@@ -240,3 +240,39 @@ button.tabbutton {
 .hidden {
 	display: none;
 }
+
+div.popup {
+	display: none;
+	max-width: 50%;
+	z-index: 9998;
+	background-color: #f8f8f8;
+	border: 1px solid #31322E;
+	color: #31322E;
+	border-radius: 4px;
+	padding: 3px;
+}
+
+div.block {
+	display: none;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(51,51,51,.3);
+	/*display: flex;*/
+	align-items: center;
+	justify-content: center;
+}
+
+div.popupheader {
+	background-color: rgba(51,51,51,.15);
+	padding: 4px;
+	font-weight: bold;
+	border-radius: 4px 4px 0 0;
+}
+
+div.popupcontent {
+	margin: 4px;
+}

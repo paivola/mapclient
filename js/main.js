@@ -23,7 +23,7 @@ require.config({
 	baseUrl: "js"
 });
 
-require(['minified', 'leaflet', 'comms', 'range', 'sidebar'], function(MINI, LL, comms, R, side) {
+require(['minified', 'leaflet', 'comms', 'range', 'sidebar', 'popup'], function(MINI, LL, comms, R, side, popup) {
 
 	// Minified init right here
 	$ = MINI.$;
@@ -43,6 +43,18 @@ require(['minified', 'leaflet', 'comms', 'range', 'sidebar'], function(MINI, LL,
 		
 		side.init();
 		comms.addCB("getsettings", function(d){side.updateSettings(d);});
+		
+		popup.init();
+		
+		$("#connectionSettings").on("click", function() {
+			popup.show("Connection settings", "Host&nbsp;<input id=\"host\" placeholder=\"localhost\"><br /> Port&nbsp;<input id=\"port\" placeholder=\"8080\">", function(ok) {
+			if(ok) {
+				comms.host = $("#host").get("value");
+				comms.port = $("#port").get("value", true);
+				console.log(comms.host+", "+comms.port);
+				comms.connect();
+			}
+		});});
 		
 
 	});
