@@ -13,7 +13,7 @@ var EE;
 var _;
 var L;
 var range;
-var mapPointList = [];
+var objectlist = { "points": [], "connections": [] };
 
 require.config({
 	paths: {
@@ -89,6 +89,10 @@ function initMap () {
 	map.on('dblclick', function(e) {
 		console.log(e.latlng);
 		L.marker(e.latlng, {opacity: 0.65}).addTo(overlays.Points);
+		alert(e.lat);
+		var point = { "latlng" : [] };
+		objectlist.points.push( e.latlng );
+		alert(objectlist.points);
 	});
 	
 	L.control.layers(null, overlays).addTo(map);
