@@ -104,7 +104,7 @@ define(['minified'],
             },
 
             sendObject: function(object){
-                this.socket.send( action: "sendObject", object: JSON.stringify(object) );
+                this.socket.send( {action: "add", object: JSON.stringify(object)} );
             },
 
             success: function(obj) {

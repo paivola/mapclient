@@ -13,7 +13,6 @@ var EE;
 var _;
 var L;
 var range;
-//var objectlist = { "points": [], "paths": [] };
 var path_checklist = []; // templist which contains paths coordinates and checks when to draw line
 
 require.config({
@@ -102,7 +101,7 @@ function initMap () {
 	
 	map.on('dblclick', function(e) {
 		marker = L.marker(e.latlng, {opacity: 0.65}).addTo(overlays.Points);
-		var point = {"action": "move", "model_id": 0, "lat": e.latlng.lat, "lng": e.latlng.lng};
+		var point = {"action": "move", "model_id": 0, "lat": e.latlng.lat, "lng": e.latlng.lng, "type": "point"};
 		comms.sendObject( point );
 		//model_id pitää saada tietää jostain
 
@@ -116,7 +115,7 @@ function initMap () {
 	              smoothFactor: 1
 	            });
 	            line.addTo(overlays.Paths);
-	            var path = {"action": "move", "model_id": 0, "start_latlng": [ path_checklist[0].lat, path_checklist[0].lng  ], "end_latlng":  [ path_checklist[1].lat, path_checklist[1].lng ]};
+	            var path = {"action": "move", "model_id": 0, "start_latlng": [ path_checklist[0].lat, path_checklist[0].lng  ], "end_latlng":  [ path_checklist[1].lat, path_checklist[1].lng ], "type": "path"};
 	            path_checklist = [];
 	            comms.sendObject( path );
 		    }
