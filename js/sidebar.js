@@ -65,7 +65,8 @@ define(['minified'],
 				$("#available_tab").ht("<ul>");
 				for(var i in this.raw_settings) {
 					var cur = this.raw_settings[i];
-					$("#available_tab").add(HTML(this.itemp({name: i, type: cur.type, color: cur.color, icon: cur.misc.icon})));
+					var image = "<img src='../mapclient/bower_components/leaflet-dist/images/"+ cur.misc.icon + "'> </img>";
+					$("#available_tab").add(HTML(this.itemp({name: i, type: cur.type, color: cur.color, icon: image })));
 				}
 				$("#available_tab").add(HTML("</ul"));
 				
@@ -76,6 +77,19 @@ define(['minified'],
 					$("#currently_placing").set('innerHTML', name);
 					$(".sidebarlistchild").set("$", "+hidden");
 					this.select(".sidebarlistchild").set("$", "-hidden");
+
+					/*console.log($('.sidebarlistchild > *').filter( 
+                        function (element) {
+                              window.kissa =  $(element).get("innerHTML");
+                              return _.startsWith( kissa, "Icon: " );
+                        }
+
+                    ).map( function(element) {
+                       return $(element).get("innerHTML");    
+                    }
+    
+                   ) );*/
+
 				});
 			}
 		};

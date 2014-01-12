@@ -39,7 +39,7 @@ require(['minified', 'leaflet', 'comms', 'range', 'sidebar', 'popup'], function(
 
 		comms.connect();
 
-		initMap();
+		initMap(comms);
 		range = R.init("#range", "#timePosWeek", "#timePosYear", 20);
 		
 		side.init();
@@ -72,7 +72,7 @@ function resizeMap () {
 		)+"px");
 }
 
-function initMap () {
+function initMap (comms) {
 	window.onresize = function() { resizeMap(); };
 	resizeMap();
 	
